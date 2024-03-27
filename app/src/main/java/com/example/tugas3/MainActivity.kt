@@ -3,12 +3,13 @@ package com.example.tugas3
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.background
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.height
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -16,6 +17,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -35,7 +38,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    GreetingText(pesan = "Happy Graduation Jenia!!",
+                    Background(pesan = "Happy Graduation Jenia!!",
                         ucapan = "Selamat dan sukses atas kelulusan Anda! " +
                                 "Semoga masa depan penuh dengan kesempatan dan prestasi " +
                                 "yang gemilang." +
@@ -53,11 +56,8 @@ fun GreetingText(pesan: String, ucapan : String , pengirim : String,modifier: Mo
         Font(R.font.natural_handwritten)
     )
     val customFontFamily2 = FontFamily(
-        Font(R.font.racing_games)
+        Font(R.font.natural_beauty)
     )
-    Box(modifier = Modifier
-        .fillMaxSize()
-        .background(Color.DarkGray))
     Column (
         verticalArrangement = Arrangement.Top
             ) {
@@ -66,37 +66,61 @@ fun GreetingText(pesan: String, ucapan : String , pengirim : String,modifier: Mo
             style = TextStyle(
                 color = Color.White,
                 fontFamily = customFontFamily2,
-                fontSize = 60.sp,
-                lineHeight = 50.sp,
+                fontSize = 55.sp,
+                lineHeight = 80.sp,
                 textAlign = TextAlign.Center
             )
         )
             }
     Column (
         verticalArrangement = Arrangement.Center,
-        modifier = modifier.padding(6.dp)){
+        modifier = modifier.fillMaxSize()){
+
+        Spacer(modifier = Modifier.weight(0.4f))
         Text(
             text = ucapan,
             style = TextStyle(
                 color = Color.White,
                 fontFamily = customFontFamily,
-                fontSize = 45.sp,
-                lineHeight = 45.sp,
+                fontSize = 20.sp,
+                lineHeight = 30.sp,
                 textAlign = TextAlign.Center
             )
         )
+        Spacer(modifier = Modifier.weight(0.55f))
     }
     Column(
-        verticalArrangement = Arrangement.Bottom,) {
+        verticalArrangement = Arrangement.Bottom,
+        horizontalAlignment = Alignment.End,
+        modifier = Modifier.fillMaxSize(),
+        ) {
+        Spacer(modifier = Modifier.weight(1f))
+
         Text(
             text = pengirim,
+            style = TextStyle(
             color = Color.White,
-            fontFamily =customFontFamily2,
-            fontSize = 26.sp,
-            modifier = Modifier
-                .padding(5.dp)
-                .align(alignment = Alignment.End)
+            fontFamily =customFontFamily,
+            fontSize = 28.sp,
         )
+        )
+        Spacer(modifier = Modifier.height(340.dp))
+    }
+}
+@Composable
+fun Background(pesan: String, ucapan : String , pengirim : String){
+    val gambar = painterResource(R.drawable.background3)
+    Box {
+        Image(painter = gambar,
+            contentDescription =null,
+            modifier = Modifier.fillMaxSize(),
+            alpha = 0.9F,
+            contentScale = ContentScale.Crop
+        )
+        GreetingText(pesan = pesan,
+            ucapan = ucapan ,
+            pengirim = pengirim,
+            modifier = Modifier.fillMaxSize())
     }
 }
 
@@ -104,7 +128,7 @@ fun GreetingText(pesan: String, ucapan : String , pengirim : String,modifier: Mo
 @Composable
 fun GreetingPreview() {
     Tugas3Theme {
-        GreetingText(pesan = "Happy Graduation Jenia!!",
+        Background(pesan = "Happy Graduation Jenia!!",
             ucapan = "Selamat dan sukses atas kelulusan Anda! " +
                     "Semoga masa depan penuh dengan kesempatan dan prestasi " +
                     "yang gemilang." +
