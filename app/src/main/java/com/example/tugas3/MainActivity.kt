@@ -88,7 +88,7 @@ fun GreetingText(pesan: String, ucapan : String , pengirim : String,modifier: Mo
                 textAlign = TextAlign.Center
             )
         )
-        Spacer(modifier = Modifier.weight(0.55f))
+        Spacer(modifier = Modifier.weight(0.45f))
     }
     Column(
         verticalArrangement = Arrangement.Bottom,
@@ -105,7 +105,7 @@ fun GreetingText(pesan: String, ucapan : String , pengirim : String,modifier: Mo
             fontSize = 28.sp,
         )
         )
-        Spacer(modifier = Modifier.height(340.dp))
+        Spacer(modifier = Modifier.height(290.dp))
     }
 }
 @Composable
