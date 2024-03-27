@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -38,12 +39,12 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Background(pesan = "Happy Graduation Jenia!!",
+                    Background(pesan = stringResource(R.string.happy_graduation_jenia),
                         ucapan = "Selamat dan sukses atas kelulusan Anda! " +
                                 "Semoga masa depan penuh dengan kesempatan dan prestasi " +
                                 "yang gemilang." +
                                 "Selamat menjalani babak baru! \uD83C\uDF1F\uD83C\uDF89",
-                        pengirim = "From Jatmika" )
+                        pengirim = stringResource(R.string.from_jatmika) )
                 }
             }
         }
@@ -74,7 +75,7 @@ fun GreetingText(pesan: String, ucapan : String , pengirim : String,modifier: Mo
             }
     Column (
         verticalArrangement = Arrangement.Center,
-        modifier = modifier.fillMaxSize()){
+        modifier = Modifier.fillMaxSize()){
 
         Spacer(modifier = Modifier.weight(0.4f))
         Text(
@@ -128,11 +129,13 @@ fun Background(pesan: String, ucapan : String , pengirim : String){
 @Composable
 fun GreetingPreview() {
     Tugas3Theme {
-        Background(pesan = "Happy Graduation Jenia!!",
+        Background(
+            pesan = stringResource(R.string.happy_graduation_jenia),
             ucapan = "Selamat dan sukses atas kelulusan Anda! " +
                     "Semoga masa depan penuh dengan kesempatan dan prestasi " +
                     "yang gemilang." +
                     "Selamat menjalani babak baru! \uD83C\uDF1F\uD83C\uDF89",
-            pengirim = "From Jatmika" )
+            pengirim = stringResource(R.string.from_jatmika)
+        )
     }
 }
